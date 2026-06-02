@@ -31,18 +31,22 @@ class ComprasModel {
         const {
             id_cliente,
             id_livro,
-            quantidade,
+            qtde,
+            valor,
+            desconto,
             data_compra
         } = data;
 
         const [result] = await pool.execute(
             `INSERT INTO compras
-            (id_cliente, id_livro, quantidade, data_compra)
-            VALUES (?, ?, ?, ?)`,
+            (id_cliente, id_livro, qtde, valor, desconto, data_compra)
+            VALUES (?, ?, ?, ?, ?, ?)`,
             [
                 id_cliente,
                 id_livro,
-                quantidade,
+                qtde,
+                valor,
+                desconto,
                 data_compra
             ]
         );
@@ -54,7 +58,9 @@ class ComprasModel {
         const {
             id_cliente,
             id_livro,
-            quantidade,
+            qtde,
+            valor,
+            desconto,
             data_compra
         } = data;
 
@@ -62,13 +68,17 @@ class ComprasModel {
             `UPDATE compras
             SET id_cliente = ?,
                 id_livro = ?,
-                quantidade = ?,
+                qtde = ?,
+                valor = ?,
+                desconto = ?,
                 data_compra = ?
             WHERE id_compra = ?`,
             [
                 id_cliente,
                 id_livro,
-                quantidade,
+                qtde,
+                valor,
+                desconto,
                 data_compra,
                 id
             ]

@@ -32,21 +32,21 @@ class LivrosModel {
         const {
             titulo,
             autor,
+            ano_publicacao,
             preco,
-            estoque,
             id_categoria,
             id_editora
         } = data;
 
         const [result] = await pool.execute(
             `INSERT INTO livros
-            (titulo, autor, preco, estoque, id_categoria, id_editora)
+            (titulo, autor, ano_publicacao, preco, id_categoria, id_editora)
             VALUES (?, ?, ?, ?, ?, ?)`,
             [
                 titulo,
                 autor,
+                ano_publicacao,
                 preco,
-                estoque,
                 id_categoria,
                 id_editora
             ]
@@ -59,8 +59,8 @@ class LivrosModel {
         const {
             titulo,
             autor,
+            ano_publicacao,
             preco,
-            estoque,
             id_categoria,
             id_editora
         } = data;
@@ -69,16 +69,16 @@ class LivrosModel {
             `UPDATE livros
             SET titulo = ?,
                 autor = ?,
+                ano_publicacao = ?,
                 preco = ?,
-                estoque = ?,
                 id_categoria = ?,
                 id_editora = ?
             WHERE id_livro = ?`,
             [
                 titulo,
                 autor,
+                ano_publicacao,
                 preco,
-                estoque,
                 id_categoria,
                 id_editora,
                 id
