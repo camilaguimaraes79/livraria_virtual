@@ -102,12 +102,15 @@ npm install
 **3. Configure o arquivo .env**
 
 Crie um arquivo `.env` dentro da pasta `backend` com as seguintes variaveis:
+
+```env
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=sua_senha
 DB_NAME=livraria
 JWT_SECRET=sua_chave_secreta
 PORT=4000
+```
 
 **4. Inicie o servidor em modo de desenvolvimento**
 ```bash
