@@ -1,6 +1,6 @@
 # Livraria Virtual — API REST
 
-Sistema backend para gerenciamento de uma livraria online, desenvolvido com Node.js, Express e MySQL como parte de projeto desenvolvido durante o curso de Informática para internet  no SENAC.
+Sistema backend para gerenciamento de uma livraria online, desenvolvido com Node.js, Express e MySQL como parte de projeto desenvolvido durante o curso de Técnico Informática para internet  no SENAC.
 
 ---
 
