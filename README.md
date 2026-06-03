@@ -28,35 +28,43 @@ A API segue os princípios REST, utilizando os métodos HTTP (GET, POST, PUT, DE
 ---
 
 ## Estrutura do Projeto
+
+```
 livraria_loja_virtual/
-backend/
-.env
-server.js
-package.json
-src/
-database/
-connection.js
-models/
-clienteModel.js
-categoriaModel.js
-editoraModel.js
-livroModel.js
-compraModel.js
-controllers/
-clienteController.js
-categoriaController.js
-editoraController.js
-livroController.js
-compraController.js
-routes/
-clienteRoutes.js
-categoriaRoutes.js
-editoraRoutes.js
-livroRoutes.js
-compraRoutes.js
-middlewares/
-utils/
----
+│
+├── backend/
+│   ├── .env
+│   ├── server.js
+│   ├── package.json
+│   │
+│   └── src/
+│       ├── database/
+│       │   └── connection.js
+│       │
+│       ├── models/
+│       │   ├── clienteModel.js
+│       │   ├── categoriaModel.js
+│       │   ├── editoraModel.js
+│       │   ├── livroModel.js
+│       │   └── compraModel.js
+│       │
+│       ├── controllers/
+│       │   ├── clienteController.js
+│       │   ├── categoriaController.js
+│       │   ├── editoraController.js
+│       │   ├── livroController.js
+│       │   └── compraController.js
+│       │
+│       ├── routes/
+│       │   ├── clienteRoutes.js
+│       │   ├── categoriaRoutes.js
+│       │   ├── editoraRoutes.js
+│       │   ├── livroRoutes.js
+│       │   └── compraRoutes.js
+│       │
+│       ├── middlewares/
+│       └── utils/
+```
 
 ## Banco de Dados
 
