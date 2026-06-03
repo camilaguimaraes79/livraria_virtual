@@ -24,7 +24,6 @@ A API segue os princípios REST, utilizando os métodos HTTP (GET, POST, PUT, DE
 | Bcrypt | Criptografia de senhas |
 | JsonWebToken | Geracao e validacao de tokens JWT |
 | Nodemon | Reinicio automatico do servidor durante o desenvolvimento |
-
 ---
 
 ## Estrutura do Projeto
