@@ -22,35 +22,37 @@ class EditorasModel {
     async createEditora(data) {
         const { nome, email, telefone } = data;
 
-        const [result] = await pool.execute(
+        const [rows] = await pool.execute(
             `INSERT INTO editoras (nome, email, telefone)
-             VALUES (?, ?, ?)`,
+            VALUES (?, ?, ?)`,
             [nome, email, telefone]
         );
 
-        return result;
+        return rows;
     }
 
     async updateEditora(id, data) {
         const { nome, email, telefone } = data;
 
-        const [result] = await pool.execute(
+        const [rows] = await pool.execute(
             `UPDATE editoras
-            SET nome = ?, email = ?, telefone = ?
+            SET nome = ?,
+            email = ?, 
+            telefone = ?
             WHERE id_editora = ?`,
             [nome, email, telefone, id]
         );
 
-        return result;
+        return rows;
     }
 
     async deleteEditora(id) {
-        const [result] = await pool.execute(
+        const [rows] = await pool.execute(
             'DELETE FROM editoras WHERE id_editora = ?',
             [id]
         );
 
-        return result;
+        return rows;
     }
 }
 

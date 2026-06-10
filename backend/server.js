@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from "cors";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -10,7 +11,10 @@ import livroRoutes from './src/routes/livroRoutes.js';
 import compraRoutes from './src/routes/compraRoutes.js';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
+
+app.use(cors());
 app.use(express.json());
 
 // Rotas
@@ -20,7 +24,6 @@ app.use('/editoras', editoraRoutes);
 app.use('/livros', livroRoutes);
 app.use('/compras', compraRoutes);
 
-const PORT = process.env.PORT || 3000;
 
 console.log(process.env);
 

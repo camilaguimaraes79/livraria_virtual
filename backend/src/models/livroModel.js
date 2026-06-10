@@ -4,11 +4,12 @@ class LivrosModel {
 
     async showLivros() {
         console.log("🔥 MODEL ATUAL EXECUTADO");
+
         const [rows] = await pool.execute(`
             SELECT
                 l.*,
                 c.categoria,
-                e.nome
+                e.nome AS editora
             FROM livros l
             INNER JOIN categorias c
                 ON l.id_categoria = c.id_categoria

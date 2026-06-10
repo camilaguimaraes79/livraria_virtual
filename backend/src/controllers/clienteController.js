@@ -1,3 +1,4 @@
+import clienteModel from '../models/clienteModel.js';
 import ClientesModel from '../models/clienteModel.js';
 
 class ClienteController {
@@ -34,12 +35,15 @@ class ClienteController {
 
     async createCliente(req, res) {
         try {
+            const [findEmail] = await clienteModel.selectClientByEmail(req.body.email);
+            if (findEmail) {
+                return res.json({message: "Email já cadastrado "});
+            }
             const result = await ClientesModel.createCliente(req.body);
+            if(clienteModel.affectedRows > 0) {return res.status(201).json({message:"Cliente cadastrado com sucesso!"});
+                
+            }
 
-            return res.status(201).json({
-                message: 'Cliente cadastrado com sucesso',
-                result
-            });
 
         } catch (error) {
             return res.status(500).json({ error: error.message });
@@ -49,12 +53,20 @@ class ClienteController {
     async updateCliente(req, res) {
         try {
             const { id } = req.params;
+            const[findEmail] = await clienteModel.getClienteByEmail(req.body.email,id);
 
-            await ClientesModel.updateCliente(id, req.body);
+            if(findEmail) {
+                return res.json({message:"Email já cadastrado"});
+            }
 
-            return res.status(200).json({
+            const cliente =  await ClientesModel.updateCliente(id, req.body);
+            if(cliente.affectedRows > 0) {
+                return res.status(200).json({
                 message: 'Cliente atualizado com sucesso'
             });
+            }
+
+            
 
         } catch (error) {
             return res.status(500).json({ error: error.message });

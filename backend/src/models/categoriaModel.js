@@ -25,35 +25,35 @@ class CategoriasModel {
         console.log("categoria:", categoria);
 
         
-        const [result] = await pool.execute(
+        const [rows] = await pool.execute(
             `INSERT INTO categorias (categoria)
             VALUES (?)`,
             [categoria]
         );
 
-        return result;
+        return rows;
     }
 
     async updateCategoria(id, data) {
         const { categoria } = data;
 
-        const [result] = await pool.execute(
+        const [rows] = await pool.execute(
             `UPDATE categorias
             SET categoria = ?
             WHERE id_categoria = ?`,
             [categoria, id]
         );
 
-        return result;
+        return rows;
     }
 
     async deleteCategoria(id) {
-        const [result] = await pool.execute(
+        const [rows] = await pool.execute(
             'DELETE FROM categorias WHERE id_categoria = ?',
             [id]
         );
 
-        return result;
+        return rows;
     }
 }
 

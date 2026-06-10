@@ -10,35 +10,39 @@ class ClienteModel {
         return rows;
     }
 
-    async getClienteById(id) {
-        const [rows] = await pool.execute(
-            'SELECT * FROM clientes WHERE id_cliente = ?',
-            [id]
-        );
+        async getClienteByEmail (email, id=0) {
+        const [row] = await pool.execute(
+        "SELECT * FROM clientes WHERE email =? AND id_cliente !=?;",
+        [email, id]);
 
-        return rows[0];
+        return row;
     }
 
     async createCliente(data) {
-        const { nome, email, telefone } = data;
+        console.log("DADOS RECEBIDOS:", data);
+        const { nome, email, telefone, cidade, estado } = data;
 
         const [result] = await pool.execute(
-            `INSERT INTO clientes (nome, email, telefone)
-            VALUES (?, ?, ?)`,
-            [nome, email, telefone]
+            `INSERT INTO clientes (nome, email, telefone ,cidade ,estado)
+            VALUES (?, ?, ?, ?, ?)`,
+            [nome, email, telefone,cidade,estado]
         );
 
         return result;
     }
 
     async updateCliente(id, data) {
-        const { nome, email, telefone } = data;
+        const { nome, email, telefone, cidade, estado } = data;
 
         const [result] = await pool.execute(
             `UPDATE clientes
-            SET nome = ?, email = ?, telefone = ?
+            SET nome = ?,
+            email = ?, 
+            telefone = ?,
+            cidade   = ?,
+            estado   = ?
             WHERE id_cliente = ?`,
-            [nome, email, telefone, id]
+            [nome, email, telefone,  cidade, estado, id]
         );
 
         return result;
